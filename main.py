@@ -28,7 +28,7 @@ def safe_request(method, url, **kwargs):
     return None
 
 
-# GET
+# GET obtener
 def obtener_posts():
     data = safe_request("GET", url)
     if data:
@@ -79,7 +79,8 @@ def actualizar_post(id):
     }
 
     data = safe_request("PUT", f"{url}/{id}", json=update_post)
-    if data:
+    if data:5
+
         print("Post actualizado:")
         print(data)
 
