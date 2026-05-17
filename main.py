@@ -1,5 +1,7 @@
 import requests
 
+from colorama import Fore, Style, init 
+
 url = "https://jsonplaceholder.typicode.com/posts"
 
 def safe_request(method, url, **kwargs):
@@ -79,7 +81,7 @@ def actualizar_post(id):
     }
 
     data = safe_request("PUT", f"{url}/{id}", json=update_post)
-    if data:5
+    if data:
 
         print("Post actualizado:")
         print(data)
@@ -93,17 +95,19 @@ def eliminar_post(id):
     except requests.exceptions.RequestException as e:
          print(f"Error en DELETE: {e}")
 
+# Inicializa colorama
+init(autoreset=True)
 
 def menu():
     while True:
-        print("\n--- MENÚ ---")
-        print("1. Ver posts")
-        print("2. Crear post")
-        print("3. Actualizar post")
-        print("4. Eliminar post")
-        print("5. Salir")
+        print(f"\n{Fore.BLUE}--- MENÚ ---{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}1. Ver")
+        print(f"{Fore.GREEN}2. Crear")
+        print(f"{Fore.GREEN}3. Actualizar")
+        print(f"{Fore.GREEN}4. Eliminar")
+        print(f"{Fore.RED}5. Salir")
 
-        opcion = input("Elegí una opción: ")
+        opcion = input(f"{Fore.BLUE}Elegí una opción: ")
 
         if opcion == "1":
             obtener_posts()
